@@ -33,27 +33,31 @@ public class Solution {
 
     private static int getLongest(StringBuilder s1, StringBuilder s2) {
         int i=0;
-        int j=0;
+        int j;
         int count;
         int max = 0;
         while (i<s1.length()) {
-            int tempI = i;
             j = 0;
             while(j<s2.length()) {
                 count = 0;
-                int tempI2 = tempI;
-                System.out.println(tempI2 + ", " + j + ", " + s1.charAt(tempI2) + " <-> " + s2.charAt(j));
-                if (s1.charAt(tempI2)==s2.charAt(j)) {
-                    while(tempI2 < s1.length() && j<s2.length() && s1.charAt(tempI2)==s2.charAt(j)) {
-                        System.out.println("in loop: " + tempI2 + ", " + j + ", " + s1.charAt(tempI2) + " <-> " + s2.charAt(j));
-                        tempI2++;
-                        j++;
-                        count++;
-                        // TODO can you add to i?
+                System.out.println(i + ", " + j + ", " + s1.charAt(i) + " <-> " + s2.charAt(j));
+                if (s1.charAt(i)==s2.charAt(j)) {
+
+                    int a = i;
+                    int b = j;
+                    while(a < s1.length() && b < s2.length()) {
+                        if (s1.charAt(a) == s2.charAt(b)) {
+                            count++;
+                            a++;
+                            b++;
+                        } else {
+                            b++;
+                        }
                     }
-                } else {
-                    j++;
                 }
+
+                j++;
+
 
                 if (count > max) {
                     System.out.println("updated count: " + count);
@@ -85,19 +89,20 @@ public class Solution {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-
-        String s1 = scanner.nextLine();
-
-        String s2 = scanner.nextLine();
-
-        int result = commonChild(s1, s2);
-
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-
-        bufferedWriter.close();
-
-        scanner.close();
+//        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+//
+//        String s1 = scanner.nextLine();
+//
+//        String s2 = scanner.nextLine();
+//
+//        int result = commonChild(s1, s2);
+//
+//        bufferedWriter.write(String.valueOf(result));
+//        bufferedWriter.newLine();
+//
+//        bufferedWriter.close();
+//
+//        scanner.close();
+        System.out.println(commonChild("HNHAN", "NHAAAAN"));
     }
 }
